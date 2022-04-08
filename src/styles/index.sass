@@ -1,0 +1,138 @@
+@import '~bootstrap/scss/bootstrap.scss'
+@import './vars.sass'
+@import './fonts.sass'
+
+.abs-child
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+.noselect
+  -webkit-touch-callout: none /* iOS Safari */
+  -webkit-user-select: none /* Safari */
+  -khtml-user-select: none /* Konqueror HTML */
+  -moz-user-select: none /* Firefox */
+  -ms-user-select: none /* Internet Explorer/Edge */
+  user-select: none /* Non-prefixed version, currently supported by Chrome and Opera */
+
+.Button
+  font-size: 16px
+  line-height: 2
+  font-weight: bold
+  padding: 0 30px
+  display: block
+  text-align: center
+  cursor: pointer
+  text-decoration: none
+  &--primary
+    color: $black !important
+    background: linear-gradient(269.55deg, rgba(1, 254, 1, 0.75) 0.39%, rgba(0, 255, 224, 0.75) 95.73%)
+    border: 1px solid #26DC38
+    border-radius: 100px
+    box-shadow: 0px 0px 10px 0px #01FE0100
+    transform: box-shadow .3s
+    &:hover
+      box-shadow: 0px 0px 10px 0px #01FE0180
+
+.mb-20
+  margin-bottom: 20px
+.mb-32
+  margin-bottom: 32px
+
+.Background,
+.Viewer
+  @extend .abs-child
+
+.Background
+  overflow: hidden
+
+.SectionWithBackground
+  position: relative
+  width: 100%
+  height: 100vh
+  &__background
+    @extend .abs-child
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+    &--darkened
+      &::after
+        content: ''
+        @extend .abs-child
+        background-color: rgba(0, 0, 0, .35)
+  &__container
+    @extend .abs-child
+    @extend .d-flex
+    &__content
+      @extend .d-flex
+      @extend .flex-grow-1
+      @extend .flex-column
+      @extend .justify-content-center
+      @extend .container
+      opacity: 1
+      transition: opacity $transition
+      .ContentSlider--clicked &
+        opacity: 0
+
+*
+  @extend .noselect
+
+.Loader
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: 5000
+  background-color: $black
+  transition: opacity .9s
+  &--transparent
+    opacity: 0
+
+.App
+  width: 100%
+  height: 100%
+  position: relative
+
+  .Header,
+  .Footer
+    width: 100%
+    height: 64px
+    @extend .d-flex
+    @extend .flex-row
+    @extend .align-items-center
+    background-color: $black
+    position: relative
+    z-index: 100
+  .Header
+    margin-bottom: -64px
+    .Logo
+      width: 100px
+      height: auto
+  .Footer
+    // margin-top: -64px
+    @extend .justify-content-center
+    &__link
+      width: 40px
+      height: 40px
+      @extend .mx-2
+
+  .Section
+    background-color: #F5F5F5
+    ul
+      list-style: none
+      li
+        position: relative
+        &::before
+          content: ''
+          position: absolute
+          top: .5em
+          left: -1em
+          background-color: #FF00FB
+          display: inline-block
+          font-weight: bold
+          width: .5em
+          height: .5em
+          border-radius: 10px

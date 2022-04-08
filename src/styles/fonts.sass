@@ -1,0 +1,162 @@
+@import '~bootstrap/scss/bootstrap.scss'
+
+@font-face
+  font-family: 'Futura'
+  src: url('./fonts/Futura/Futura-Book.ttf') format('truetype')
+  font-weight: normal
+@font-face
+  font-family: 'Futura'
+  src: url('./fonts/Futura/Futura-Medium.ttf') format('truetype')
+  font-weight: medium
+@font-face
+  font-family: 'Futura'
+  src: url('./fonts/Futura/Futura-Bold.otf') format('opentype')
+  font-weight: bold
+@font-face
+  font-family: 'Futura'
+  src: url('./fonts/Futura/Futura-Book-Italic.ttf') format('truetype')
+  font-weight: normal
+  font-style: italic
+@font-face
+  font-family: 'Futura'
+  src: url('./fonts/Futura/Futura-Medium-Italic.ttf') format('truetype')
+  font-weight: medium
+  font-style: italic
+@font-face
+  font-family: 'Futura'
+  src: url('./fonts/Futura/Futura-Bold-Italic.ttf') format('truetype')
+  font-weight: bold
+  font-style: italic
+
+*
+  font-family: 'Futura', sans-serif
+  font-weight: normal
+
+.underline
+  width: 100%
+  position: relative
+  margin-bottom: 44px !important
+  &::after
+    content: ''
+    position: absolute
+    bottom: -16px
+    left: 0
+    width: 100%
+    height: 1px
+    background-color: $black
+
+@mixin font-params($font-size, $line-height)
+  font-size: calc($font-size * 1px) !important
+  line-height: calc($line-height * 1px) !important
+
+.h1, .h2, .h3
+  font-weight: bold
+  &:not(&.font-weight-normal)
+    font-weight: bold !important
+  &--underline
+    @extend .underline
+.h1
+  @include font-params(56, 60)
+  @include media-breakpoint-up(lg)
+    @include font-params(45, 56)
+  @include media-breakpoint-up(xs)
+    @include font-params(36, 44)
+  &--italic
+    font-size: 51px
+    @include media-breakpoint-up(lg)
+      font-size: 41px
+    @include media-breakpoint-up(xs)
+      font-size: 31px
+  &--xl
+    @include font-params(64, 84)
+    @include media-breakpoint-up(xs)
+      @include font-params(48, 62)
+
+.h2
+  @include font-params(32, 40)
+  margin-bottom: 26px
+  @include media-breakpoint-up(md)
+    @include font-params(26, 32)
+    margin-bottom: 21px
+  @include media-breakpoint-up(xs)
+    @include font-params(22, 28)
+    margin-bottom: 18px
+.h3
+  @include font-params(20, 28)
+  @include media-breakpoint-up(md)
+    @include font-params(16, 24)
+  @include media-breakpoint-up(xs)
+    @include font-params(14, 20)
+
+.p
+  &--xxxxl
+    @include font-params(36, 40)
+    @include media-breakpoint-up(md)
+      @include font-params(30, 32)
+    @include media-breakpoint-up(xs)
+      @include font-params(25, 28)
+  &--xxxl
+    @include font-params(32, 40)
+    @include media-breakpoint-up(lg)
+      @include font-params(28, 40)
+    @include media-breakpoint-up(md)
+      @include font-params(26, 32)
+    @include media-breakpoint-up(xs)
+      @include font-params(18, 24)
+  &--xxl
+    @include font-params(26, 32)
+    @include media-breakpoint-up(md)
+      @include font-params(20, 28)
+    @include media-breakpoint-up(xs)
+      @include font-params(15, 22)
+  &--xl
+    @include font-params(23, 28)
+    @include media-breakpoint-up(md)
+      @include font-params(19, 24)
+    @include media-breakpoint-up(xs)
+      @include font-params(16, 20)
+  &--l
+    @include font-params(20, 28)
+    @include media-breakpoint-up(md)
+      @include font-params(16, 24)
+    @include media-breakpoint-up(xs)
+      @include font-params(14, 20)
+  &--m
+    @include font-params(16, 24)
+    &.p--arrow,
+    &.p--cross
+      &::before,
+      &::after
+        width: 24px
+        height: 24px
+  &--s
+    @include font-params(14, 20)
+    &.p--arrow,
+    &.p--cross
+      &::before,
+      &::after
+        width: 20px
+        height: 20px
+    @include media-breakpoint-up(md)
+      @include font-params(12, 16)
+      &.p--arrow,
+      &.p--cross
+        &::before,
+        &::after
+          width: 16px
+          height: 16px
+  &--xs
+    @include font-params(12, 16)
+    @include media-breakpoint-up(md)
+      @include font-params(10, 12)
+    @include media-breakpoint-up(xs)
+      @include font-params(10, 14)
+  &--xxs
+    @include font-params(8, 11)
+
+p
+  a
+    color: $black
+    text-decoration: underline
+    &:hover
+      color: $black

@@ -30,13 +30,13 @@ class Arc extends Unit {
       if (!this.loaded) {
         this.loaded = true
 
-        this.model.rotation.y = Math.PI
+        // this.model.rotation.y = Math.PI
         if (document.body.clientWidth > document.body.clientHeight) {
           this.model.scale.set(1.5, 1.5, 1.5)
-          this.model.position.set(0, -2, 0)
+          this.model.position.set(0, -5, -30)
         } else {
           this.model.scale.set(1.2, 1.2, 1.2)
-          this.model.position.set(0, -2, 0)
+          this.model.position.set(0, -5, -30)
         }
       }
 

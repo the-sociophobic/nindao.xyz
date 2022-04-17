@@ -5,9 +5,13 @@ import Header from './Header'
 import Footer from './Footer'
 import SectionWithBackground from './SectionWithBackground'
 import Background from './Background'
+import Bot from './sections/Bot'
+import About from './sections/About'
 
 import backgroundImg from '../styles/img/background.jpg'
+import logoImg from '../styles/img/logo.svg'
 import Section from './Section'
+
 
 const Site: React.FC = () => {
   const store = React.useContext(Context)
@@ -20,9 +24,22 @@ const Site: React.FC = () => {
       <SectionWithBackground
         backgroundImage={backgroundImg}
       >
-        <Background />
+        {/* <Background /> */}
+        <div className='container d-flex flex-row justify-content-center position-relative'>
+          <div className='col-11 col-sm-4 d-flex flex-column justify-content-center'>
+            <img
+              src={logoImg}
+              className='w-100 mb-3'
+            />
+            <p className='p text-white text-center'>
+              the cyborg for trustless coordination ツ
+            </p>
+          </div>
+        </div>
       </SectionWithBackground>
-      {sections.map((section: any, index: number) =>
+      <Bot />
+      <About />
+      {/* {sections.map((section: any, index: number) =>
         <Section
           title={section.title}
           bullets={section.bullets}
@@ -30,7 +47,7 @@ const Site: React.FC = () => {
           imageMobile={section.imageMobile}
           imageToRight={!!(index % 2)}
         />
-      )}
+      )} */}
       <Footer />
     </div>
     :

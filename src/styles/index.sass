@@ -17,6 +17,12 @@
   -ms-user-select: none /* Internet Explorer/Edge */
   user-select: none /* Non-prefixed version, currently supported by Chrome and Opera */
 
+.def-img
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  // background-size: contain
+
 .Button
   font-size: 16px
   line-height: 2
@@ -31,10 +37,13 @@
     background: linear-gradient(269.55deg, rgba(1, 254, 1, 0.75) 0.39%, rgba(0, 255, 224, 0.75) 95.73%)
     border: 1px solid #26DC38
     border-radius: 100px
-    box-shadow: 0px 0px 10px 0px #01FE0100
-    transform: box-shadow .3s
-    &:hover
-      box-shadow: 0px 0px 10px 0px #01FE0180
+    box-shadow: 0px 0px 10px 0px #01FE0180
+  &--secondary
+    color: $black !important
+    background: linear-gradient(269.55deg, rgba(1, 254, 1, 0.75) 0.39%, rgba(0, 255, 224, 0.75) 95.73%)
+    border: 1px solid #26DC38
+    border-radius: 100px
+    box-shadow: 0px 0px 10px rgba(1, 254, 1, 0.5)
 
 .mb-20
   margin-bottom: 20px
@@ -92,9 +101,9 @@
     opacity: 0
 
 .App
-  width: 100%
-  height: 100%
-  position: relative
+  // width: 100%
+  // height: 100%
+  // position: relative
 
   .Header,
   .Footer
@@ -103,21 +112,21 @@
     @extend .d-flex
     @extend .flex-row
     @extend .align-items-center
-    background-color: $black
     position: relative
     z-index: 100
   .Header
+    background-color: $black
     margin-bottom: -64px
     .Logo
       width: 100px
       height: auto
   .Footer
     // margin-top: -64px
-    @extend .justify-content-center
+    background-color: #01FE01
     &__link
       width: 40px
       height: 40px
-      @extend .mx-2
+      @extend .ms-5
 
   .Section
     background-color: #F5F5F5
@@ -136,3 +145,24 @@
           width: .5em
           height: .5em
           border-radius: 10px
+
+.Bot
+  background-color: #F1F1F1
+  border: 1px solid #FFFFFF
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.08)
+  border-radius: 24px
+  padding: 20px 0
+
+#About
+  position: relative
+  &::before
+    content: ''
+    position: absolute
+    left: 50%
+    bottom: 0
+    transform: translateX(-50%)
+    width: 100%
+    padding-top: 21.46%
+    background-image: url(./img/line.svg)
+    @extend .def-img
+    z-index: -1

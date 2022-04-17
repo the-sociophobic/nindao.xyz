@@ -25,7 +25,7 @@ const Header: React.FC<HeaderPropsType> = () => {
           to={page.botLink}
           className='Button Button--primary d-inline-block'
         >
-          Transform now
+          Get started
         </ExternalLink>
       </div>
     </div>

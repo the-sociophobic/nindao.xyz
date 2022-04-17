@@ -16,28 +16,30 @@ const Footer: React.FC<FooterPropsType> = () => {
 
   return (
     <div className='Footer'>
-      {[
-        {
-          link: page.telegramLink,
-          img: telegramImg
-        },
-        {
-          link: page.githubLink,
-          img: githubImg
-        },
-        {
-          link: page.twitterLink,
-          img: twitterImg
-        },
-      ].map(link =>
-        <ExternalLink
-          newTab
-          to={link.link}
-          className='Footer__link'
-        >
-          <img src={link.img} />
-        </ExternalLink>
-      )}
+      <div className='container d-flex flex-row justify-content-end'>
+        {[
+          {
+            link: page.telegramLink,
+            img: telegramImg
+          },
+          {
+            link: page.githubLink,
+            img: githubImg
+          },
+          {
+            link: page.twitterLink,
+            img: twitterImg
+          },
+        ].map(link =>
+          <ExternalLink
+            newTab
+            to={link.link}
+            className='Footer__link'
+          >
+            <img src={link.img} />
+          </ExternalLink>
+        )}
+      </div>
     </div>
   )
 }

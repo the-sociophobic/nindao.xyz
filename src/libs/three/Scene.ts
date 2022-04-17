@@ -62,14 +62,14 @@ export default class Scene extends TransitionsHandler {
       0.1,
       1000
     )
-    // this.scene.controls = new OrbitControls(this.scene.camera, this.scene.renderer.domElement)
-    // this.scene.controls.enabled = false
+    this.scene.controls = new OrbitControls(this.scene.camera, this.scene.renderer.domElement)
+    this.scene.controls.enabled = false
     this.scene.camera.position.x = 0
     this.scene.camera.position.y = 0
-    this.scene.camera.position.z = 0//targetToCamera * 2.05
+    this.scene.camera.position.z = targetToCamera * 2.05
     // this.scene.camera.position.y = Math.PI / 4
 
-    // this.scene.controls.update()
+    this.scene.controls.update()
 
     this.scene.composer = new EffectComposer(this.scene.renderer)
     this.scene.composer.addPass(new RenderPass(this.scene.scene, this.scene.camera))
@@ -122,7 +122,7 @@ export default class Scene extends TransitionsHandler {
     if (!isOffscreen || true) {
       const {
         composer,
-        // controls,
+        controls,
         units,
         clock,
         renderer,
@@ -142,7 +142,7 @@ export default class Scene extends TransitionsHandler {
             // react: this.props.react,
           }))
 
-      // controls.update()
+      controls.update()
       composer.render()
       // composer.render(clock.getDelta())
       // renderer.render(this.scene.scene, this.scene.camera)

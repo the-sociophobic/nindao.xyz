@@ -14,9 +14,9 @@ const About: React.FC<AboutPropsType> = () => {
 
   return (
     <div id='About' >
-      <div className='container mt-5'>
+      <div className='container mt-5 mb-neg32'>
         <div className='row d-flex justify-content-around'>
-          <div className='col-12 col-sm-6 d-flex flex-column my-3'>
+          <div className='col-12 col-md-5 d-flex flex-column my-3'>
             <h1 className='h1 mb-4'>
               About
             </h1>
@@ -28,7 +28,7 @@ const About: React.FC<AboutPropsType> = () => {
               <br /><br />
             </p>
           </div>
-          <div className='col-12 col-sm-6 d-flex flex-column my-3'>
+          <div className='col-12 col-md-7 d-flex flex-column my-3'>
             <img
               src={PhoneImg}
               className='w-100'

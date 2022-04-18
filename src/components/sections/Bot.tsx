@@ -27,18 +27,32 @@ const Bot: React.FC<BotPropsType> = () => {
               </div>
               <div className='col-11 col-sm-5 d-flex flex-column justify-content-center my-3'>
                 <h1 className='h1 mb-4'>
-                  Transform Groups Chats<br />into DAOs
+                  Convert your group chat<br />into DAO
                 </h1>
                 <p className='p'>
-                  Invite @NINDAO_bot to your group chat and convert it into a DAO for  trustless management right from Telegram.
+                  NinDAO combines on-chain transactions with open-source protocol, allowing web3 ninjas to coordinate in stealth, right from Telegram.
+                  <br />
+                  Features:
                 </p>
+                <ul>
+                  <li>
+                    Gnosis Safe Multisig
+                  </li>
+                  <li>
+                    Telegram-Metamask Integration
+                  </li>
+                  <li>
+                    On-chain governance
+                  </li>
+                </ul>
                 <div className='d-flex flex-row justify-content-end'>
                   <ExternalLink
                     newTab
                     to={page.botLink}
                     className='Button Button--primary d-inline-block'
+                    disabled
                   >
-                    Get started
+                    Coming Soon
                   </ExternalLink>
                 </div>
               </div>

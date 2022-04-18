@@ -6,19 +6,30 @@ export type ExternalLinkProps = {
   newTab?: boolean
   className?: string
   children?: JSX.Element | string
+  disabled?: boolean
 }
 
 
-const ExternalLink = (props: ExternalLinkProps) => (
-  <a
-    className={props.className}
-    href={(props.to.includes('http') ? '' : 'https://') + props.to}
-    target={props.newTab ? "_blank" : ""}
-    rel="noopener noreferrer"
-  >
-    {props.children}
-  </a>
-)
+const ExternalLink: React.FC<ExternalLinkProps> = ({
+  to,
+  newTab,
+  className,
+  children,
+  disabled,
+}) =>
+  disabled ?
+    <div className={`${className} cursor-default`}>
+      {children}
+    </div>
+    :
+    <a
+      className={className}
+      href={(to.includes('http') ? '' : 'https://') + to}
+      target={newTab ? "_blank" : ""}
+      rel="noopener noreferrer"
+    >
+      {children}
+    </a>
 
 
 export default ExternalLink

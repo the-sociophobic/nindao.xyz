@@ -34,7 +34,7 @@ const Site: React.FC = () => {
               className='w-100 mb-3'
             />
             <p className='p text-white text-center'>
-              the cyborg for trustless coordination ツ
+              the web3 cyborg for trustless coordination ツ
             </p>
           </div>
         </div>

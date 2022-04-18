@@ -16,7 +16,7 @@ const Instructions: React.FC<InstructionsPropsType> = () => {
         <div className='row'>
           <div className='col'>
             <h2 className='h2 mb-3'>
-              Folow this easy steps to connect:
+              Getting Started
             </h2>
           </div>
         </div>
@@ -25,23 +25,22 @@ const Instructions: React.FC<InstructionsPropsType> = () => {
             {
               title: '1. Integrate',
               bullets: [
-                'Invite NINDAO to your group chat',
-                'Input wallet addresses for the Multisig',
-                'Connect Telegram with Metamask using your mobile device through walletConnect.',
+                'Add @ninDAO_bot to your group chat',
+                'Input member wallet addresses for the Multisig',
               ]
             },
             {
               title: '2. Transform',
               bullets: [
-                'NINDAO will send a transaction to initiate the DAO.',
+                'Using your mobile device, connect to Metamask through WalletConnect',
+                'NinDAO will send an Etherscan transaction to confirm DAO initiation',
               ]
             },
             {
               title: '3. Organize',
               bullets: [
-                'Manage treasure',
-                'Create voting polls',
-                'Make proposals',
+                'Trustlessly manage your digital assets with on-chain transactions',
+                'Create and edit proposals, voting polls, and membership',
               ]
             }
           ].map(tile =>

@@ -22,23 +22,27 @@ const FAQ: React.FC<FAQPropsType> = () => {
             {[
               {
                 title: 'What is NINDAO?',
-                text: 'NINDAO is a Telegram cyborg that enables users to turn group chats into fully-functioning, trustless DAO management platforms.'
+                text: 'NinDAO is a Telegram cyborg that enables users to turn group chats into fully-functioning, trustless DAO management platforms.'
               },
               {
                 title: 'Okay, so its a Telegram bot.',
                 text: <>
-                  NINDAO is built from (de)centralized parts for web3 purposes, similar to the machine-organism hybrid of a cyborg.
+                  NinDAO is built from (de)centralized parts for web3 purposes, similar to the machine-organism hybrid of a cyborg.
                   <br />
                   As DAOs integrate automation with human collaboration, they could be considered cyborg organizations.
                 </>
               },
               {
                 title: 'What can NINDAO do?',
-                text: 'NINDAO allows members to manage their treasury, perform multisig transactions, open voting polls, make proposals, and manage membership.'
+                text: 'NinDAO allows members to manage their treasury, perform multisig transactions, open voting polls, make proposals, and manage membership.'
               },
               {
                 title: 'Why NINDAO?',
-                text: `NinDAO comes from Japanese にんだお — Ninja way. Like Naruto's way to become Hokage, NinDAO will fight it's way to decentralized glory!`
+                text: <>
+                  NinDAO reprograms applications already in-use as sites for web3 innovation and tooling.
+                  <br />
+                  By leveraging familiar mechanics, both web3 natives and newcomers are enabled to start their own DAO.
+                </>
               },
             ].map(dropdown =>
               <Dropdown

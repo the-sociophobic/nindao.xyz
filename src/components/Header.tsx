@@ -36,8 +36,9 @@ const Header: React.FC<HeaderPropsType> = () => {
           newTab
           to={page.botLink}
           className='Button Button--primary d-inline-block'
+          disabled
         >
-          Get started
+          Coming Soon
         </ExternalLink>
       </div>
     </div>

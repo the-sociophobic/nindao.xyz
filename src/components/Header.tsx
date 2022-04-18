@@ -20,6 +20,18 @@ const Header: React.FC<HeaderPropsType> = () => {
           className='Logo'
           src={Logo}
         />
+        <div className='flex-grow-1 d-none d-lg-flex flex-row justify-content-end'>
+          {['Bot', 'About', 'Instructions', 'FAQ']
+            .map(link =>
+              <a
+                key={link}
+                href={`#${link}`}
+                className='Header__anchor'
+              >
+                {link}
+              </a>
+            )}
+        </div>
         <ExternalLink
           newTab
           to={page.botLink}

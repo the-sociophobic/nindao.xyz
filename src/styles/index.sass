@@ -9,7 +9,7 @@
   width: 100%
   height: 100%
 
-.noselect
+.no-select
   -webkit-touch-callout: none /* iOS Safari */
   -webkit-user-select: none /* Safari */
   -khtml-user-select: none /* Konqueror HTML */
@@ -50,6 +50,25 @@
 .mb-32
   margin-bottom: 32px
 
+ul
+  list-style: none
+  padding-left: 1rem
+  margin-bottom: 0
+  li
+    position: relative
+    margin-bottom: 1rem
+    &::before
+      content: ''
+      position: absolute
+      top: .5em
+      left: -1em
+      background-color: #FF00FB
+      display: inline-block
+      font-weight: bold
+      width: .5em
+      height: .5em
+      border-radius: 10px
+
 .Background,
 .Viewer
   @extend .abs-child
@@ -85,8 +104,8 @@
       .ContentSlider--clicked &
         opacity: 0
 
-*
-  @extend .noselect
+// *
+//   @extend .no-select
 
 .Loader
   position: fixed
@@ -114,12 +133,18 @@
     @extend .align-items-center
     position: relative
     z-index: 100
+    &__anchor
+      cursor: pointer
+      text-decoration: none
+      margin-right: 35px
   .Header
     background-color: $black
     margin-bottom: -64px
     .Logo
       width: 100px
       height: auto
+    &__anchor
+      color: white
   .Footer
     // margin-top: -64px
     background-color: #01FE01
@@ -127,24 +152,12 @@
       width: 40px
       height: 40px
       @extend .ms-5
+    &__anchor
+      color: black
+      line-height: 40px
 
   .Section
     background-color: #F5F5F5
-    ul
-      list-style: none
-      li
-        position: relative
-        &::before
-          content: ''
-          position: absolute
-          top: .5em
-          left: -1em
-          background-color: #FF00FB
-          display: inline-block
-          font-weight: bold
-          width: .5em
-          height: .5em
-          border-radius: 10px
 
 .Bot
   background-color: #F1F1F1
@@ -166,3 +179,86 @@
     background-image: url(./img/line.svg)
     @extend .def-img
     z-index: -1
+
+#Instructions
+  background-color: black
+  padding: 50px 0 30px
+  *
+    color: white
+  .tile
+    height: 100%
+    background: rgba(241, 241, 241, 0.1)
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    border-radius: 24px
+    padding: 50px 20px
+    @include media-breakpoint-down(lg)
+      padding: 30px 18px
+    @include media-breakpoint-down(md)
+      padding: 26px 15px
+
+#FAQ
+  background-color: black
+  padding-bottom: 100px
+  *
+    color: white
+  .title
+    background-color: rgba(255, 255, 255, 0.1)
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    border-bottom: none
+    border-top-left-radius: 12px
+    border-top-right-radius: 12px
+    font-weight: bold
+    color: #01FE01
+    padding: 15px 20px 15px
+  .Dropdown
+    @extend .d-flex
+    @extend .flex-column
+    @extend .align-items-center
+    background-color: rgba(255, 255, 255, 0.1)
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    &:not(&:last-of-type)
+      border-bottom: none
+    &:last-of-type
+      border-bottom-left-radius: 12px
+      border-bottom-right-radius: 12px
+    &__title
+      width: 100%
+      cursor: pointer
+      position: relative
+      display: inline-block
+      padding: 15px 0 15px
+      @extend .d-flex
+      &__text
+        width: 100%
+        @extend .flex-grow-1
+        @extend .no-select
+        padding: 0 20px
+        font-weight: bold
+        &::after
+          content: ''
+          position: absolute
+          right: 32px
+          top: 50%
+          width: 32px
+          height: 32px
+          @extend .def-img
+          background-image: url(./img/dropdown__arrow.svg)
+          transform: translateY(-50%) rotate(-90deg)
+          transition: transform .2s
+
+    &__content
+      width: 100%
+      transition: height .2s
+      overflow: hidden
+      &__container
+        padding: 63px 20px 48px
+        @include media-breakpoint-down(md)
+          padding: 32px 20px 48px
+        @include media-breakpoint-down(sm)
+          padding: 21px 20px 31px
+        width: 100%
+        @extend .d-flex
+        @extend .flex-column
+    &--opened
+      .Dropdown__title__text::after
+        transform: translateY(-50%) rotate(0deg)

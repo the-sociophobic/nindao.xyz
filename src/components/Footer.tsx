@@ -17,6 +17,18 @@ const Footer: React.FC<FooterPropsType> = () => {
   return (
     <div className='Footer'>
       <div className='container d-flex flex-row justify-content-end'>
+        <div className='flex-grow-1 d-none d-lg-flex flex-row'>
+          {['Bot', 'About', 'Instructions', 'FAQ']
+            .map(link =>
+              <a
+                key={link}
+                href={`#${link}`}
+                className='Footer__anchor'
+              >
+                {link}
+              </a>
+            )}
+        </div>
         {[
           {
             link: page.telegramLink,

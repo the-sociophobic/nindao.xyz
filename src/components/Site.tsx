@@ -4,19 +4,21 @@ import { Context } from './Store'
 import Header from './Header'
 import Footer from './Footer'
 import SectionWithBackground from './SectionWithBackground'
-import Background from './Background'
+// import Background from './Background'
 import Bot from './sections/Bot'
 import About from './sections/About'
+import Instructions from './sections/Instructions'
+import FAQ from './sections/FAQ'
 
 import backgroundImg from '../styles/img/background.jpg'
 import logoImg from '../styles/img/logo.svg'
-import Section from './Section'
+// import Section from './Section'
 
 
 const Site: React.FC = () => {
   const store = React.useContext(Context)
-  const sections = store?.contentful?.pages?.[0]?.sections
-    ?.filter((section: any) => section.type === 'section')
+  // const sections = store?.contentful?.pages?.[0]?.sections
+  //   ?.filter((section: any) => section.type === 'section')
 
   return store.ready ?
     <div className="App">
@@ -39,6 +41,8 @@ const Site: React.FC = () => {
       </SectionWithBackground>
       <Bot />
       <About />
+      <Instructions />
+      <FAQ />
       {/* {sections.map((section: any, index: number) =>
         <Section
           title={section.title}

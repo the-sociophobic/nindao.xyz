@@ -3,7 +3,7 @@ import React from 'react'
 import { Context } from '../Store'
 import ExternalLink from '../ExternalLink'
 
-import GirlImg from '../../styles/img/girl.png'
+import GirlImg from '../../styles/img/girl.jpg'
 
 
 export type BotPropsType = {}

@@ -12,7 +12,12 @@ export type FooterPropsType = {}
 
 const Footer: React.FC<FooterPropsType> = () => {
   const store = React.useContext(Context)
-  const page = store.contentful.pages[0]
+  // const page = store.contentful.pages[0]
+  const page = {
+    telegramLink: '',
+    githubLink: '',
+    twitterLink: ''
+  }
 
   return (
     <div className='Footer'>

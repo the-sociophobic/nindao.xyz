@@ -9,7 +9,7 @@ export type FAQPropsType = {}
 
 const FAQ: React.FC<FAQPropsType> = () => {
   const store = React.useContext(Context)
-  const page = store.contentful.pages[0]
+  // const page = store.contentful.pages[0]
 
   return (
     <div id='FAQ' >

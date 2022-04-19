@@ -8,7 +8,7 @@ export type InstructionsPropsType = {}
 
 const Instructions: React.FC<InstructionsPropsType> = () => {
   const store = React.useContext(Context)
-  const page = store.contentful.pages[0]
+  // const page = store.contentful.pages[0]
 
   return (
     <div id='Instructions' >

@@ -11,7 +11,10 @@ export type HeaderPropsType = {}
 
 const Header: React.FC<HeaderPropsType> = () => {
   const store = React.useContext(Context)
-  const page = store.contentful.pages[0]
+  // const page = store.contentful.pages[0]
+  const page = {
+    botLink: ''
+  }
 
   return (
     <div className='Header'>

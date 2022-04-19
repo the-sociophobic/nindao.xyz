@@ -11,7 +11,10 @@ export type BotPropsType = {}
 
 const Bot: React.FC<BotPropsType> = () => {
   const store = React.useContext(Context)
-  const page = store.contentful.pages[0]
+  // const page = store.contentful.pages[0]
+  const page = {
+    botLink: ''
+  }
 
   return (
     <div className='container my-5' id='Bot' >

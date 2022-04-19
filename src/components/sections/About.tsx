@@ -10,7 +10,7 @@ export type AboutPropsType = {}
 
 const About: React.FC<AboutPropsType> = () => {
   const store = React.useContext(Context)
-  const page = store.contentful.pages[0]
+  // const page = store.contentful.pages[0]
 
   return (
     <div id='About' >

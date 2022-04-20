@@ -1,4 +1,7 @@
-import * as THREE from 'three'
+import {
+  Vector3,
+  PointLight
+} from 'three'
 
 import Unit from '../Unit'
 
@@ -14,7 +17,7 @@ const lightColors = [
 ]
 
 const lightPos = () =>
-  new THREE.Vector3(
+  new Vector3(
     (Math.random() - .5) * 2 * arenaRadius * .99,
     (Math.random() - .5) * 2 * arenaRadius * .99,
     -(Math.random() - .26) * arenaRadius * .99
@@ -29,13 +32,13 @@ export default class Lowpoly extends Unit {
   constructor(props: any) {
     super(props)
 
-    const { scene, THREE } = props
+    const { scene } = props
 
     this.lights = Array
       .from(
         { length: numberOfLights },
         (light, index) => {
-          const tmp = new THREE.PointLight(
+          const tmp = new PointLight(
             lightColors[index % lightColors.length],
             3.5,
             35

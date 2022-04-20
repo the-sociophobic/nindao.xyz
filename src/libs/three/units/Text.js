@@ -1,9 +1,8 @@
-import * as THREE from 'three'
-import createGeometry from 'three-bmfont-text'
-import loadFont from  'load-bmfont'
+import { TextureLoader, MeshBasicMaterial, Mesh } from "three";
+import createGeometry from "three-bmfont-text";
+import loadFont from "load-bmfont";
 
-import Unit from 'libs/three/Unit'
-
+import Unit from "libs/three/Unit";
 
 class Text extends Unit {
   init = async () => {
@@ -11,38 +10,37 @@ class Text extends Unit {
       loadFont(this.props.font, (err, font) => {
         var geometry = createGeometry({
           width: 255,
-          align: 'center',
-          font: font
-        })
-      
-        geometry.update(this.props.text)
-        
+          align: "center",
+          font: font,
+        });
+
+        geometry.update(this.props.text);
+
         // the resulting layout has metrics and bounds
-        console.log(geometry.layout.height)
-        console.log(geometry.layout.descender)
-          
+        console.log(geometry.layout.height);
+        console.log(geometry.layout.descender);
+
         // the texture atlas containing our glyphs
-        var textureLoader = new THREE.TextureLoader();
-        textureLoader.load('fonts/Arial.png', function (texture) {
+        var textureLoader = new TextureLoader();
+        textureLoader.load("fonts/Arial.png", function (texture) {
           // we can use a simple ThreeJS material
-          var material = new THREE.MeshBasicMaterial({
+          var material = new MeshBasicMaterial({
             map: texture,
             transparent: true,
-            color: 0xaaffff
-          })
-      
+            color: 0xaaffff,
+          });
+
           // now do something with our mesh!
-          res(THREE.Mesh(geometry, material))
-        })
-      })
-    })
+          res(Mesh(geometry, material));
+        });
+      });
+    });
 
-    this.props.scene.scene.add(this.text)
-  }
+    this.props.scene.scene.add(this.text);
+  };
 
-  animate = frame => {}
-  dispose = () => {}
+  animate = (frame) => {};
+  dispose = () => {};
 }
 
-
-export default Text
+export default Text;

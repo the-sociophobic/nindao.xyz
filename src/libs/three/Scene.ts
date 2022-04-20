@@ -1,4 +1,9 @@
-import * as THREE from 'three'
+import {
+  Scene as ThreeScene,
+  Clock,
+  WebGLRenderer,
+  PerspectiveCamera,
+} from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
@@ -26,11 +31,11 @@ export default class Scene extends TransitionsHandler {
     this.scene = {
       renderer: undefined,
       camera: undefined,
-      scene: new THREE.Scene(),
+      scene: new ThreeScene(),
       composer: undefined,
       controls: undefined,
 
-      clock: new THREE.Clock(),
+      clock: new Clock(),
       frameNumber: 0,
 
       units: {},
@@ -46,7 +51,7 @@ export default class Scene extends TransitionsHandler {
 
     //ADD RENDERER
     const optimise = W > 1200
-    this.scene.renderer = new THREE.WebGLRenderer({ antialias: !optimise, alpha: true })
+    this.scene.renderer = new WebGLRenderer({ antialias: !optimise, alpha: true })
     this.scene.renderer.setClearColor(0x000000, 0)
     this.scene.renderer.setSize(W, H)
     // this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
@@ -56,7 +61,7 @@ export default class Scene extends TransitionsHandler {
     ViewerDiv.appendChild(this.scene.renderer.domElement)
 
     //ADD CAMERA
-    this.scene.camera = new THREE.PerspectiveCamera(
+    this.scene.camera = new PerspectiveCamera(
       50,
       W / H,
       0.1,
@@ -137,7 +142,6 @@ export default class Scene extends TransitionsHandler {
       Object.keys(units)
         .forEach(unitName =>
           units[unitName].animate({
-            THREE: THREE,
             ...this.scene,
             input: this.scene.units.Controls,
             maxFrameNumber: maxFrameNumber,
@@ -156,7 +160,6 @@ export default class Scene extends TransitionsHandler {
 
   initUnits = () => {
     const props = {
-      THREE: THREE,
       ...this.scene,
       input: this.scene.units.Controls,
       maxFrameNumber: maxFrameNumber,

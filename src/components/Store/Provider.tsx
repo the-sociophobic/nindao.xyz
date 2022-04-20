@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 import {
   StateType,
@@ -45,7 +45,7 @@ class Provider extends React.Component<{}, StateType> {
 
   registerInitializeCallback = (fn: Function) => {
     this.initializeCallBacks.push(fn)
-    !_.isEmpty(this.state.contentfulData) && fn()
+    !isEmpty(this.state.contentfulData) && fn()
   }
 
   callInitializeCallbacks = () =>

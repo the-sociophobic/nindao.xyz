@@ -1,6 +1,6 @@
 import React from 'react'
 
-import _ from 'lodash'
+import { mapValues } from 'lodash'
 import { createClient } from 'contentful'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -34,7 +34,7 @@ const parseItem = (item: any) =>
 ({
   id: item.sys.id,
   type: item?.sys?.contentType?.sys?.id,
-  ..._.mapValues(
+  ...mapValues(
     item.fields,
     field => Array.isArray(field) ?
       field.map(entry => parseField(entry))

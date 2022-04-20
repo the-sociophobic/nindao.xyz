@@ -64,7 +64,6 @@ class Cubes extends Unit {
 
     const geometry = new BoxGeometry(1, 1, 1)
     const material = new MeshStandardMaterial({ color: 0x557755, metalness: 1 })
-    console.log(material)
     this.cubeInstance = new InstancedMesh(geometry, material, numberOfCubes)
     this.cubeInstance.instanceMatrix.setUsage(DynamicDrawUsage)
     scene.add(this.cubeInstance)

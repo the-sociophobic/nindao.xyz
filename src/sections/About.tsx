@@ -20,11 +20,9 @@ const About: React.FC<AboutPropsType> = ({
             <h1 className='h1 mb-4'>
               {section.title}
             </h1>
-            <p className='p mb-5'>
-              {section.text}
-              <br className='d-none d-md-inline' /><br className='d-none d-md-inline' />
-              <br className='d-none d-md-inline' /><br className='d-none d-md-inline' />
-            </p>
+            {section.text}
+            <br className='d-none d-md-inline' /><br className='d-none d-md-inline' />
+            <br className='d-none d-md-inline' /><br className='d-none d-md-inline' />
           </div>
           <div className='col-12 col-md-6 d-flex flex-column my-3'>
             <img

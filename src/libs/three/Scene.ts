@@ -84,7 +84,6 @@ export default class Scene extends TransitionsHandler {
       // amount: { value: 0.007283953185305944 },
       // seed: { value: 0.7455557390189151 }
     }
-    console.log(glitchPass.uniforms)
     this.scene.composer.addPass(glitchPass)
 
     // this.interaction = new Interaction(this.scene.renderer, this.scene.scene, this.scene.camera)

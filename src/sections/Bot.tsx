@@ -29,9 +29,7 @@ const Bot: React.FC<BotPropsType> = ({
                 <h1 className='h1 mb-4'>
                   {section.title}
                 </h1>
-                <p className='p'>
-                  {section.text}
-                </p>
+                {section.text}
                 <div className='d-flex flex-row justify-content-end'>
                   <ActionButton />
                 </div>

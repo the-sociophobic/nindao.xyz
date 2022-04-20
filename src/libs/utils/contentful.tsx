@@ -60,9 +60,16 @@ const parseField = (field: any): string | any => {
 const parseContentfulText = (document: any) =>
   documentToReactComponents(document, {
     renderNode: {
-      [BLOCKS.LIST_ITEM]: (node, children) => <li className='ml-4'>{children}</li>,
+      [BLOCKS.LIST_ITEM]: (node, children) =>
+        <li className='ml-4'>
+          {children}
+        </li>,
     },
-    renderText: text => text.split('\n').flatMap((text, i) => [i > 0 && <br />, text]),
+    renderText: text =>
+      text
+        .split('\n')
+        .flatMap((text, i) =>
+          [i > 0 && <br key={i} />, text]),
   })
 
 

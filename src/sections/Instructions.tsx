@@ -32,9 +32,7 @@ const Instructions: React.FC<InstructionsPropsType> = ({
                 <h3 className='h3'>
                   {subsection.title}
                 </h3>
-                <p className='p'>
-                  {subsection.text}
-                </p>
+                {subsection.text}
               </div>
             </div>
           )}

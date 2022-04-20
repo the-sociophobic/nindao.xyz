@@ -4,19 +4,15 @@ import {
   WebGLRenderer,
   PerspectiveCamera,
 } from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass'
-// import { Interaction } from 'three.interaction'
 
 import isProd from '../utils/isProd'
 import TransitionsHandler from './handlers/TransitionsHandler'
 
 
-const targetToCamera = -15
 const maxFrameNumber = 25000
-const scaleFactor = 150
 
 
 export default class Scene extends TransitionsHandler {
@@ -33,7 +29,6 @@ export default class Scene extends TransitionsHandler {
       camera: undefined,
       scene: new ThreeScene(),
       composer: undefined,
-      controls: undefined,
 
       clock: new Clock(),
       frameNumber: 0,
@@ -54,9 +49,7 @@ export default class Scene extends TransitionsHandler {
     this.scene.renderer = new WebGLRenderer({ antialias: !optimise, alpha: true })
     this.scene.renderer.setClearColor(0x000000, 0)
     this.scene.renderer.setSize(W, H)
-    // this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
     this.scene.renderer.setPixelRatio(window.devicePixelRatio)
-    this.scene.renderer.shadowMap.enabled = true
 
     ViewerDiv.appendChild(this.scene.renderer.domElement)
 
@@ -67,26 +60,12 @@ export default class Scene extends TransitionsHandler {
       0.1,
       1000
     )
-    this.scene.controls = new OrbitControls(this.scene.camera, this.scene.renderer.domElement)
-    this.scene.controls.enabled = false
-    this.scene.camera.position.x = 0
-    this.scene.camera.position.y = 0
-    this.scene.camera.position.z = targetToCamera * 2.05
-    // this.scene.camera.position.y = Math.PI / 4
-
-    this.scene.controls.update()
+    this.scene.camera.position.z = 30
 
     this.scene.composer = new EffectComposer(this.scene.renderer)
     this.scene.composer.addPass(new RenderPass(this.scene.scene, this.scene.camera))
     const glitchPass = new GlitchPass(7000)
-    glitchPass.uniforms = {
-      ...glitchPass.uniforms,
-      // amount: { value: 0.007283953185305944 },
-      // seed: { value: 0.7455557390189151 }
-    }
     this.scene.composer.addPass(glitchPass)
-
-    // this.interaction = new Interaction(this.scene.renderer, this.scene.scene, this.scene.camera)
 
     this.initUnits()
 
@@ -103,14 +82,11 @@ export default class Scene extends TransitionsHandler {
     if (!this.scene.renderer || !this.scene.camera)
       return
 
-    // const optimise = W > 1200
-
     this.scene.camera.aspect = W / H
     this.scene.camera.updateProjectionMatrix()
 
     this.scene.renderer.setSize(W, H)
     this.scene.composer.setSize(W, H)
-    // this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
     this.scene.renderer.setPixelRatio(window.devicePixelRatio)
   }
 
@@ -128,15 +104,11 @@ export default class Scene extends TransitionsHandler {
     if (!isOffscreen || true) {
       const {
         composer,
-        controls,
         units,
         clock,
         renderer,
         camera,
       } = this.scene
-
-      // camera.position.y = -scaleFactor * units.controls.scroll.alphaY
-      // controls.target.y = -scaleFactor * units.controls.scroll.alphaY
 
       Object.keys(units)
         .forEach(unitName =>
@@ -144,13 +116,9 @@ export default class Scene extends TransitionsHandler {
             ...this.scene,
             input: this.scene.units.Controls,
             maxFrameNumber: maxFrameNumber,
-            // react: this.props.react,
           }))
 
-      controls.update()
       composer.render()
-      // composer.render(clock.getDelta())
-      // renderer.render(this.scene.scene, this.scene.camera)
     }
 
     this.frameId = window.requestAnimationFrame(this.animate)
@@ -162,7 +130,6 @@ export default class Scene extends TransitionsHandler {
       ...this.scene,
       input: this.scene.units.Controls,
       maxFrameNumber: maxFrameNumber,
-      // react: this.props.react,
     }
 
 
@@ -171,7 +138,6 @@ export default class Scene extends TransitionsHandler {
         .forEach(unitName => {
           const unit = this?.props?.units?.[unitName]
 
-          // if (!unit.disabled ^ this.scene.unitsToggled) {
           if (unit?.unit)
             this.scene.units[unitName] = new unit.unit({
               ...props,
@@ -180,7 +146,6 @@ export default class Scene extends TransitionsHandler {
             })
           this.scene.units[unitName].init &&
             this.scene.units[unitName].init()
-          // }
         })
   }
 
@@ -197,7 +162,6 @@ export default class Scene extends TransitionsHandler {
       .forEach(unitName => {
         const unit = this.scene.units[unitName]
 
-        // if (!unit.disabled ^ this.scene.unitsToggled)
         unit?.start?.()
       })
 
@@ -223,9 +187,4 @@ export default class Scene extends TransitionsHandler {
     this.scene.unitsToggled = !this.scene.unitsToggled
     this.initUnits()
   }
-
-  // toggleUnit = unitName => {
-  //   // if (this.scene[unitName].enabled)
-  //   console.log(this.scene.scene.children)
-  // }
 }

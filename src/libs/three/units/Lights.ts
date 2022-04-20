@@ -4,10 +4,11 @@ import {
 } from 'three'
 
 import Unit from '../Unit'
+import isMobile from '../../utils/isMobile'
 
 
-const numberOfLights = 10
-const arenaRadius = 26
+const numberOfLights = isMobile() ? 5 : 10
+const arenaRadius = isMobile() ? 20 : 26
 const lightColors = [
   '#00c797',
   '#e400da',
@@ -18,7 +19,7 @@ const lightColors = [
 
 const lightPos = () =>
   new Vector3(
-    (Math.random() - .5) * 2 * arenaRadius * .99,
+    (Math.random() - .5) * 2 * arenaRadius * .99 * (isMobile() ? .5 : 1),
     (Math.random() - .5) * 2 * arenaRadius * .99,
     -(Math.random() - .26) * arenaRadius * .99
   )
@@ -40,7 +41,7 @@ export default class Lowpoly extends Unit {
         (light, index) => {
           const tmp = new PointLight(
             lightColors[index % lightColors.length],
-            3.5,
+            5,
             35
           )
           tmp.position.copy(lightPos())

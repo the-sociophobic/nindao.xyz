@@ -8,12 +8,13 @@ import {
 } from 'three'
 
 import Unit from '../Unit'
+import isMobile from '../../utils/isMobile'
 
 
-const numberOfCubes = 128
-const cubeRadius = 1
-const cubeSpeed = .135
-const arenaRadius = 26
+const numberOfCubes = isMobile() ? 64 : 128
+const cubeRadius = isMobile() ? .8 : 1
+const cubeSpeed = isMobile() ? .17 : .135
+const arenaRadius = isMobile() ? 20 : 26
 var dummy = new Object3D()
 
 export type cubeData = {
@@ -27,7 +28,7 @@ export type cubeData = {
 
 const cubeInitialPos = () =>
   new Vector3(
-    (Math.random() - .5) * 2 * arenaRadius * .99,
+    (Math.random() - .5) * 2 * arenaRadius * .99 * (isMobile() ? .5 : 1),
     (Math.random() - .5) * 2 * arenaRadius * .99,
     (Math.random() - .5) * 2 * arenaRadius * .99
   )

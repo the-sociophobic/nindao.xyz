@@ -1,11 +1,9 @@
-
-
-interface ContentfulItem {
+export interface ContentfulItem {
   id: string
   type: string
 }
 
-interface File extends ContentfulItem {
+export interface File extends ContentfulItem {
   id: string
   title: string
   file: {
@@ -22,15 +20,8 @@ interface File extends ContentfulItem {
   }
 }
 
-type RichTextNode = {
+export type RichTextNode = {
   props: {
     children: (string | any)[]
   }
-}
-
-
-export type {
-  ContentfulItem,
-  File,
-  RichTextNode
 }

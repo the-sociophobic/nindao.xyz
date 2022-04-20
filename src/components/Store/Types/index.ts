@@ -1,8 +1,14 @@
+import { Site, Section } from './models'
+
+
 export type StateType = {
   ready: boolean
 
   contentfulData: any
-  contentful: any
+  contentful: {
+    sites?: Site[]
+    sections?: Section[]
+  }
 }
 
 const initialState = {

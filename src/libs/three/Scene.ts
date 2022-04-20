@@ -73,11 +73,13 @@ export default class Scene extends TransitionsHandler {
 
     this.scene.composer = new EffectComposer(this.scene.renderer)
     this.scene.composer.addPass(new RenderPass(this.scene.scene, this.scene.camera))
-    const glitchPass = new GlitchPass()
-    // glitchPass.uniforms = {
-    //   ...glitchPass.uniforms,
-    //   amount: { value: .007 }
-    // }
+    const glitchPass = new GlitchPass(7000)
+    glitchPass.uniforms = {
+      ...glitchPass.uniforms,
+      // amount: { value: 0.007283953185305944 },
+      // seed: { value: 0.7455557390189151 }
+    }
+    console.log(glitchPass.uniforms)
     this.scene.composer.addPass(glitchPass)
 
     // this.interaction = new Interaction(this.scene.renderer, this.scene.scene, this.scene.camera)

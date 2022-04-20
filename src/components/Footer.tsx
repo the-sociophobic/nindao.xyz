@@ -7,19 +7,17 @@ import telegramImg from '../styles/img/telegram.svg'
 import githubImg from '../styles/img/github.svg'
 import twitterImg from '../styles/img/twitter.svg'
 
+
 export type FooterPropsType = {}
 
 
 const Footer: React.FC<FooterPropsType> = () => {
   const store = React.useContext(Context)
-  // const page = store.contentful.pages[0]
-  const page = {
-    telegramLink: '',
-    githubLink: '',
-    twitterLink: ''
-  }
+  const site = store?.contentful?.sites?.[0]
 
-  return (
+  return !site ?
+    <div />
+    :
     <div className='Footer'>
       <div className='container d-flex flex-row justify-content-end'>
         <div className='flex-grow-1 d-none d-lg-flex flex-row'>
@@ -36,21 +34,23 @@ const Footer: React.FC<FooterPropsType> = () => {
         </div>
         {[
           {
-            link: page.telegramLink,
+            url: site.telegramLink,
             img: telegramImg
           },
           {
-            link: page.githubLink,
+            url: site.githubLink,
             img: githubImg
           },
           {
-            link: page.twitterLink,
+            url: site.twitterLink,
             img: twitterImg
           },
-        ].map(link =>
+        ].map((link, index) =>
           <ExternalLink
+            key={index}
             newTab
-            to={link.link}
+            to={link.url || ''}
+            disabled={!link.url}
             className='Footer__link'
           >
             <img src={link.img} />
@@ -58,7 +58,6 @@ const Footer: React.FC<FooterPropsType> = () => {
         )}
       </div>
     </div>
-  )
 }
 
 

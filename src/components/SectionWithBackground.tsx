@@ -3,7 +3,7 @@ import React from 'react'
 
 export type SectionWithBackgroundPropsType = {
   children: JSX.Element | JSX.Element[]
-  backgroundImage: string
+  backgroundImage?: string
   backgroundContent?: JSX.Element | JSX.Element[]
   darkened?: boolean
 }

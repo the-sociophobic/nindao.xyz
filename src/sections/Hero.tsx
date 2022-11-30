@@ -3,6 +3,7 @@ import React from 'react'
 import { Section } from '../components/Store/Types/models'
 import SectionWithBackground from '../components/SectionWithBackground'
 import Background from '../components/Background'
+import ActionButton from '../components/ActionButton'
 
 
 export type HeroPropsType = {
@@ -28,6 +29,7 @@ const Hero: React.FC<HeroPropsType> = ({
           <p className='p text-white text-center'>
             {section.title}
           </p>
+          <ActionButton />
         </div>
       </div>
     </SectionWithBackground>
